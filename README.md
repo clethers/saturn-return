@@ -2,7 +2,9 @@
 
 > *"The core remains, even as the shell evolves."*
 
-A personal milestone dashboard built for the 29th birthday sprint — an architectural study in monolithic engineering, personal telemetry, and the inevitable cycle of technical rebirth.
+29 years of commits — some shipped, some rolled back, all necessary.
+
+A personal milestone dashboard built for the 29th birthday sprint.
 
 ---
 

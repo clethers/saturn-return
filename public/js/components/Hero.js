@@ -6,7 +6,7 @@ export const Hero = () => `
                     SATURN <span class="text-zinc-800">RETURN</span>
                 </h1>
                 <p class="text-zinc-400 text-lg leading-relaxed font-light">
-                    An architectural study in monolithic engineering, personal telemetry, and the inevitable cycle of technical rebirth. 
+                    29 years of commits — some shipped, some rolled back, all necessary.
                     <span class="text-zinc-600 italic">"The core remains, even as the shell evolves."</span>
                 </p>
             </div>
