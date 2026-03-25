@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SATURN_OS // v29.0.0</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'architectural-sand': '#E7E5E4',
+                        'industrial-orange': '#F97316',
+                        'electric-blue': '#38BDF8',
+                        'success-green': '#22C55E',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- HEADER -->
+    <header class="border-b border-zinc-800 px-6 py-4 flex justify-between items-center bg-black/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center gap-4">
+            <div class="text-architectural-sand font-mono font-bold text-sm tracking-tighter cursor-pointer hover:opacity-80 transition-opacity flex items-center gap-2" id="version-trigger">
+                SATURN_RETURN // <span class="underline decoration-2 underline-offset-4">VERSION_29.0.0</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-6 font-mono text-xs">
+            <div class="flex items-center gap-2 cursor-pointer opacity-60 hover:opacity-100 transition-opacity" id="search-trigger">
+                <i data-lucide="search" class="w-4 h-4"></i>
+                <span class="hidden md:inline">CMD+K</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- COMMAND PALETTE -->
+    <div id="command-palette">
+        <div class="w-full max-w-xl bg-zinc-900 border border-zinc-800 rounded-lg overflow-hidden shadow-2xl">
+            <div class="p-4 border-b border-zinc-800 flex items-center gap-3">
+                <i data-lucide="terminal" class="w-5 h-5 text-zinc-500"></i>
+                <input type="text" id="command-input" placeholder="Execute command..." class="bg-transparent border-none outline-none text-architectural-sand font-mono w-full text-sm">
+            </div>
+            <div class="p-2 max-h-64 overflow-y-auto font-mono text-xs" id="command-results">
+                <div class="p-3 hover:bg-zinc-800 rounded cursor-pointer flex justify-between items-center group">
+                    <span class="text-zinc-400 group-hover:text-white">/goto sprint_inventory</span>
+                    <span class="text-[10px] text-zinc-600">JUMP</span>
+                </div>
+                <div class="p-3 hover:bg-zinc-800 rounded cursor-pointer flex justify-between items-center group">
+                    <span class="text-zinc-400 group-hover:text-white">/system status</span>
+                    <span class="text-[10px] text-zinc-600">INFO</span>
+                </div>
+                <div class="p-3 hover:bg-zinc-800 rounded cursor-pointer flex justify-between items-center group">
+                    <span class="text-zinc-400 group-hover:text-white">/clear logs</span>
+                    <span class="text-[10px] text-zinc-600">EXEC</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div id="toast-container"></div>
+
+    <main class="flex-grow container mx-auto px-6 py-12 max-w-6xl">
+        <!-- DYNAMIC APP ROOT -->
+        <div id="app-root" class="max-w-5xl mx-auto">
+            <div class="flex items-center justify-center h-64">
+                <div class="font-mono text-zinc-700 animate-pulse uppercase tracking-[0.5em]">Initializing_System...</div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-auto border-t border-zinc-900 py-12 text-center">
+        <div class="font-mono text-[10px] text-zinc-500 uppercase tracking-[0.3em] mb-4">
+            Saturn Return is developed by <span class="text-architectural-sand">Remarx Foundation</span>
+        </div>
+        <div class="font-mono text-[10px] text-zinc-700 uppercase tracking-[0.3em] flex items-center justify-center gap-2">
+            &copy; 2026 SATURN_RETURN <span class="text-industrial-orange">•</span> ALL RIGHTS RESERVED
+        </div>
+    </footer>
+
+    <!-- Application Entry Point -->
+    <script type="module" src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+:root {
+    --obsidian: #000000;
+    --architectural-sand: #E7E5E4;
+    --industrial-orange: #F97316;
+    --electric-blue: #38BDF8;
+    --success-green: #22C55E;
+}
+
+body {
+    background-color: var(--obsidian);
+    color: #94A3B8; /* Slate 400 */
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.font-mono {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.glow-border {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(231, 229, 228, 0.1);
+    background-color: rgba(24, 24, 27, 0.4); /* Zinc 900/40 */
+}
+
+.glow-border:hover {
+    border-color: var(--architectural-sand);
+    box-shadow: 0 0 15px rgba(231, 229, 228, 0.2);
+}
+
+/* Command Palette */
+#command-palette {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+#command-palette.active {
+    display: flex;
+}
+
+/* Toasts */
+#toast-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.toast {
+    background: #111;
+    border: 1px solid #333;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--architectural-sand);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* File Explorer */
+.explorer-item {
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+}
+
+.explorer-item:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+.folder-content {
+    display: none;
+    padding-left: 20px;
+    border-left: 1px dashed #333;
+    margin-left: 10px;
+}
+
+.folder-content.active {
+    display: block;
+}
+
+.led-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.9); }
+}
+
+.terminal-window {
+    background: #111;
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    height: 400px; /* Perfectly aligned total height */
+    contain: strict; /* Prevents internal changes from affecting page layout */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.terminal-window::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
+
+.terminal-window::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+    animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+    0% { opacity: 0.27861; }
+    5% { opacity: 0.34769; }
+    10% { opacity: 0.23604; }
+    15% { opacity: 0.90626; }
+    20% { opacity: 0.18128; }
+    25% { opacity: 0.83891; }
+    30% { opacity: 0.65583; }
+    35% { opacity: 0.57807; }
+    40% { opacity: 0.26559; }
+    45% { opacity: 0.84693; }
+    50% { opacity: 0.96019; }
+    55% { opacity: 0.08523; }
+    60% { opacity: 0.71056; }
+    65% { opacity: 0.73437; }
+    70% { opacity: 0.28574; }
+    75% { opacity: 0.963; }
+    80% { opacity: 0.36803; }
+    85% { opacity: 0.00273; }
+    90% { opacity: 0.25521; }
+    95% { opacity: 0.3744; }
+    100% { opacity: 0.33722; }
+}
+
+.terminal-header {
+    height: 40px;
+    background: #1f1f23;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #333;
+    flex-shrink: 0;
+}
+
+.terminal-line {
+    height: 24px; /* Fixed pixel height for absolute stability */
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    flex-shrink: 0; /* Prevents lines from squashing */
+}
+
+#terminal-scroll-area {
+    overflow-anchor: none; /* Prevents browser from auto-scrolling the page */
+}
+
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 18px;
+    background: var(--architectural-sand);
+    margin-left: 4px;
+    animation: blink 1s infinite;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.letter-spacing-widest {
+    letter-spacing: 0.09em;
+    word-spacing: -0.2em;
+}
+
+/* Git Graph Roadmap */
+.git-graph-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.git-commit {
+    display: flex;
+    gap: 2rem;
+}
+
+.git-line {
+    position: relative;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.git-node {
+    width: 12px;
+    height: 12px;
+    border: 2px solid #333;
+    background: var(--obsidian);
+    border-radius: 50%;
+    z-index: 2;
+    margin-top: 1.25rem;
+}
+
+.git-node.active {
+    border-color: var(--industrial-orange);
+    background: var(--industrial-orange);
+    box-shadow: 0 0 15px var(--industrial-orange);
+}
+
+.git-node.pending {
+    border-style: dashed;
+    border-color: #444;
+}
+
+.git-v-line {
+    position: absolute;
+    top: 2rem;
+    bottom: -1.25rem;
+    width: 2px;
+    background: #222;
+    z-index: 1;
+}
+
+.git-v-line.dashed {
+    background: repeating-linear-gradient(to bottom, #222, #222 4px, transparent 4px, transparent 8px);
+}
+
+.git-branch-line {
+    position: absolute;
+    top: 1.6rem;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    border-left: 2px solid #222;
+    border-bottom: 2px solid #222;
+    border-bottom-left-radius: 10px;
+    z-index: 0;
+}
+
+.git-content {
+    flex: 1;
+    margin-bottom: 2.5rem;
+    padding: 1.25rem;
+    background: rgba(24, 24, 27, 0.2);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.git-commit:hover .git-content {
+    background: rgba(24, 24, 27, 0.4);
+    border-color: #333;
+}
+
+.git-commit.active .git-content {
+    border-color: rgba(255, 99, 33, 0.3);
+}
+
+@media (max-width: 768px) {
+    .git-commit {
+        gap: 1rem;
+    }
+}
+
+/* Network Nodes */
+.node-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.node-card {
+    border: 1px solid #1f1f23;
+    background: rgba(24, 24, 27, 0.2);
+    padding: 1rem;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.node-card:hover {
+    border-color: var(--electric-blue);
+    background: rgba(56, 189, 248, 0.05);
+    transform: translateY(-2px);
+}
+
+.node-status {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--success-green);
+}
+
+.node-status.offline {
+    background: #444;
+}
