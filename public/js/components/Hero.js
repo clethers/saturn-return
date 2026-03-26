@@ -1,8 +1,8 @@
 export const Hero = () => `
     <section id="hero" class="mb-24 pt-12">
         <div class="flex flex-col items-center gap-8 mb-12">
-            <div class="max-w-2xl text-center">
-                <h1 class="text-6xl md:text-8xl font-mono font-bold text-white leading-none tracking-tighter mb-8">
+            <div class="max-w-5xl text-center">
+                <h1 class="text-7xl md:text-9xl lg:text-[10rem] font-mono font-bold text-white leading-none tracking-tighter mb-8">
                     SATURN <span class="text-zinc-800">RETURN</span>
                 </h1>
                 <p class="text-zinc-400 text-lg leading-relaxed font-light">
