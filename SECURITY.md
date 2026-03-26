@@ -10,8 +10,8 @@ If you find a security issue — especially anything related to API key exposure
 
 Instead, reach out directly:
 
-- **Email**: clethersmarx@gmail.com
-- **GitHub**: [@mxclthrs](https://github.com/mxclthrs)
+- **Email**: marxclethers@gmail.com
+- **GitHub**: [@clethers](https://github.com/clethers)
 
 I'll respond as soon as I can. For a personal project like this, there's no formal SLA, but I take it seriously.
 
